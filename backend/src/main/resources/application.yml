@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: aisps-backend
+
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:aisps}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: ${DB_USER:aisps}
+    password: ${DB_PASSWORD:aisps}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+    show-sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+aisps:
+  jwt:
+    secret: ${JWT_SECRET:change-this-development-only-secret-key-please-32bytes-min}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  ml:
+    base-url: ${ML_SERVICE_URL:http://localhost:8000}
+
+logging:
+  level:
+    rw.ac.uok.aisps: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

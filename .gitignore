@@ -1,0 +1,36 @@
+# Backend (Maven/Java)
+backend/target/
+*.class
+
+# ML service (Python)
+ml-service/.venv/
+ml-service/__pycache__/
+ml-service/**/__pycache__/
+ml-service/models/*.joblib
+ml-service/models/metrics.json
+ml-service/models/active_model.txt
+ml-service/uvicorn.log
+
+# Frontend (Node)
+frontend/node_modules/
+frontend/dist/
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+
+# JVM crash dumps / build logs
+hs_err_pid*.log
+replay_pid*.log
+*.log
+
+# Claude Code local settings
+.claude/settings.local.json
+.claude/scheduled_tasks.lock

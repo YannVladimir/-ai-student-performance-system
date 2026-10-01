@@ -1,0 +1,16 @@
+course_id,course_code,course_name,credits,lecturer_user_id
+1,IT101,Introduction to Programming,4,7
+2,IT205,Database Systems,4,11
+3,IT210,Data Structures and Algorithms,2,11
+4,IT301,Web Application Development,2,9
+5,IT305,Computer Networks,4,6
+6,IT310,Operating Systems,2,9
+7,IT401,Artificial Intelligence,2,3
+8,IT405,Software Engineering,2,5
+9,BBA201,Principles of Management,4,5
+10,BBA210,Financial Accounting,2,10
+11,CE101,Engineering Mathematics,3,2
+12,CE210,Structural Analysis,3,11
+13,ACC201,Cost Accounting,2,4
+14,ACC305,Auditing,3,4
+15,IT302,Human Computer Interaction,3,2
