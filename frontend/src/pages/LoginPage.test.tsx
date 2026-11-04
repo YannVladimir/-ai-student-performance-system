@@ -28,7 +28,7 @@ describe("LoginPage", () => {
     renderLoginPage();
 
     await user.type(screen.getByLabelText(/email/i), "wrong@uok.ac.rw");
-    await user.type(screen.getByLabelText(/password/i), "wrong-password");
+    await user.type(screen.getByLabelText(/^password$/i), "wrong-password");
     await user.click(screen.getByRole("button", { name: /sign in/i }));
 
     await waitFor(() => {
@@ -39,6 +39,6 @@ describe("LoginPage", () => {
   it("requires both email and password before submitting", () => {
     renderLoginPage();
     expect(screen.getByLabelText(/email/i)).toBeRequired();
-    expect(screen.getByLabelText(/password/i)).toBeRequired();
+    expect(screen.getByLabelText(/^password$/i)).toBeRequired();
   });
 });

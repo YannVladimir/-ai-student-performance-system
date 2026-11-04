@@ -75,10 +75,29 @@ Opens on http://localhost:5173, proxying `/api` to `http://localhost:8080`.
 ## Running the automated tests
 
 ```
-cd backend && mvn test                                          # 17 tests, recreates Thesis Table 11
-cd ml-service && ./.venv/Scripts/python -m pytest                # 11 tests: preprocessing, accuracy guard, API contract
+cd backend && mvn test                                          # 18 tests, recreates Thesis Table 11
+cd ml-service && ./.venv/Scripts/python -m pytest                # 13 tests: preprocessing, accuracy guard, API contract
 cd frontend && npm test                                         # component tests (Vitest + RTL)
 ```
+
+`LoginPage.test.tsx` used `getByLabelText(/password/i)`, which matched *two*
+elements once the show/hide-password toggle button got an
+`aria-label="Show password"` -- fixed to the exact-match `/^password$/i`.
+
+## API docs
+
+The backend exposes interactive OpenAPI docs via springdoc
+(`http://localhost:8080/swagger-ui.html` when running).
+
+## Continuous integration
+
+`.github/workflows/ci.yml` runs all three services' test suites (backend,
+ml-service, frontend) plus the frontend lint and build, on every push.
+
+## License
+
+[MIT](LICENSE) for the code in this repo. The thesis documents
+(`.docx` files) are the author's own academic work, not covered by this license.
 
 ## Regenerating the sample dataset
 
@@ -91,7 +110,7 @@ Then copy the relevant files into `backend/src/main/resources/seed/` and
 ## Repo layout
 
 ```
-fabrice/
+.
 ├── dataset/            synthetic CSVs (students, courses, attendance, assessments, users)
 ├── backend/             Spring Boot API
 ├── ml-service/          FastAPI + scikit-learn prediction service
